@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TipCalculator.MainPage">
+
+    <StackLayout Orientation="Vertical" Margin="10" VerticalOptions="FillAndExpand">
+        <!-- Bill, Tip, Total, Cost per diner-->
+        <Grid HorizontalOptions="StartAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Bill" FontSize="Body"  HorizontalOptions="Start" Grid.Column="0"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Grid.Column="1" Spacing="0">
+                <Label x:Name="billAmountLabel" Text="$" Margin="0" Padding="0" FontSize="Body"/>
+                <Label x:Name="billPlaceholderLabel" Text="0.00" TextColor="LightGray" Margin="0" Padding="0" FontSize="Body" HorizontalOptions="End"/>
+            </StackLayout>
+
+            <Label Text="Tip" FontSize="Body"  Grid.Row="1"/>
+            <Label x:Name="tipAmountLabel"
+                   Text="$0.00" FontSize="Body" Grid.Row="1" Grid.Column="1" HorizontalOptions="End"/>
+
+            <Label Text="Total" FontSize="Body"  Grid.Row="2"/>
+            <Label x:Name="totalAmountLabel"
+                   Text="$0.00" FontSize="Body" Grid.Row="2" Grid.Column="1" HorizontalOptions="End"/>
+            <Label Text="Cost per diner" FontSize="Body"  Grid.Row="3"/>
+            <Label x:Name="costPerDinerLabel"
+                   Text="$0.00" FontSize="Body" Grid.Row="3" Grid.Column="1" HorizontalOptions="End"/>
+        </Grid>
+        
+        <!-- Number pad  buttons -->
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Text="7" FontSize="Large"
+                    Clicked="Numpad_Button_Clicked"/>
+            <Button Text="8" FontSize="Large" Grid.Column="1"
+                    Clicked="Numpad_Button_Clicked"/>
+            <Button Text="9" FontSize="Large" Grid.Column="2"
+                    Clicked="Numpad_Button_Clicked"/>
+            <Button Text="4" FontSize="Large" Grid.Row="1"
+                    Clicked="Numpad_Button_Clicked"/>
+            <Button Text="5" FontSize="Large" Grid.Row="1" Grid.Column="1"
+                    Clicked="Numpad_Button_Clicked"/>
+            <Button Text="6" FontSize="Large" Grid.Row="1" Grid.Column="2"
+                    Clicked="Numpad_Button_Clicked"/>
+            <Button Text="1" FontSize="Large" Grid.Row="2"
+                    Clicked="Numpad_Button_Clicked"/>
+            <Button Text="2" FontSize="Large" Grid.Row="2" Grid.Column="1"
+                    Clicked="Numpad_Button_Clicked"/>
+            <Button Text="3" FontSize="Large" Grid.Row="2" Grid.Column="2"
+                    Clicked="Numpad_Button_Clicked"/>
+            <Button Text="0" FontSize="Large" Grid.Row="3"
+                    Clicked="Numpad_Button_Clicked"/>
+            <Button Text="." FontSize="Title" FontAttributes="Bold" Grid.Row="3" Grid.Column="1"
+                    Clicked="Numpad_Button_Clicked"/>
+            <Button Text="C" FontSize="Large" Grid.Row="3" Grid.Column="2"
+                    Clicked="Numpad_Button_Clicked"/>
+        </Grid>
+        
+        <!-- Tip slider -->
+        <StackLayout Orientation="Horizontal" Margin="10,10" HorizontalOptions="FillAndExpand">
+            <Label Text="Tip" FontSize="Body"  VerticalOptions="Center" HorizontalOptions="Start" Margin="0,0,10,0"/>
+            <Slider Minimum="0" Maximum="100" Value="0" VerticalOptions="Center"  HorizontalOptions="FillAndExpand" ValueChanged="Slider_ValueChanged" />
+            <Label x:Name="percentageLabel" Text="0%" FontSize="Body"  VerticalOptions="Center"  HorizontalOptions="End" Margin="10,0,0,0"/>
+        </StackLayout>
+        
+        <!-- Number of diners stepper -->
+        <StackLayout Orientation="Horizontal" Margin="10,0,0,10" HorizontalOptions="FillAndExpand">
+            <Label Text="Diners" FontSize="Body" VerticalOptions="Center"  HorizontalOptions="Start" Margin="0,0,10,0"/>
+            <Stepper Minimum="1" Value="1" ValueChanged="Stepper_ValueChanged" VerticalOptions="Center"  HorizontalOptions="Start" Margin="10,0,0,0" Scale="1.5" />
+            <Label x:Name="numberOfDinersLabel" Text="1" FontSize="Body" VerticalOptions="Center"  HorizontalOptions="EndAndExpand" Margin="0,0,10,0"/>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
